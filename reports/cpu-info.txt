@@ -1,0 +1,9 @@
+
+
+Name                      : AMD Ryzen 7 7840HS w/ Radeon 780M Graphics     
+Manufacturer              : AuthenticAMD
+NumberOfCores             : 6
+NumberOfLogicalProcessors : 6
+
+
+
