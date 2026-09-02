@@ -1,0 +1,1101 @@
+  Determining projects to restore...
+  Restored C:\repos\mkl-amd-test\bench\MklAmdBench\MklAmdBench.csproj (in 22.59 sec).
+C:\repos\mkl-amd-test\bench\MklAmdBench\Program.cs(128,50): warning CS8602: Dereference of a possibly null reference. [C:\repos\mkl-amd-test\bench\MklAmdBench\MklAmdBench.csproj]
+C:\repos\mkl-amd-test\bench\MklAmdBench\Program.cs(131,46): warning CS8602: Dereference of a possibly null reference. [C:\repos\mkl-amd-test\bench\MklAmdBench\MklAmdBench.csproj]
+C:\repos\mkl-amd-test\bench\MklAmdBench\Program.cs(134,51): warning CS8602: Dereference of a possibly null reference. [C:\repos\mkl-amd-test\bench\MklAmdBench\MklAmdBench.csproj]
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 12 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true /p:IntermediateOutputPath="C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\obj\Release\net8.0/" /p:OutDir="C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0/" /p:OutputPath="C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0/" in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560
+// command took 0.84 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true /p:IntermediateOutputPath="C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\obj\Release\net8.0/" /p:OutDir="C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0/" /p:OutputPath="C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0/" --output "C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0/" in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560
+// command took 3.9 sec and exited with 0
+// ***** Done, took 00:00:04 (4.79 sec)   *****
+// Found 12 benchmarks:
+//   LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+//   LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+//   LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+//   LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+//   LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+//   LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+//   LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+//   LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+//   LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+//   LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+//   LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+//   LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1540 1536 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.Gemm_Multiply(Provider: Managed)" --job ShortRun-Net80 --benchmarkId 0 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 236300.00 ns, 236.3000 us/op
+WorkloadJitting  1: 1 op, 54245700.00 ns, 54.2457 ms/op
+
+WorkloadPilot    1: 2 op, 102197400.00 ns, 51.0987 ms/op
+WorkloadPilot    2: 3 op, 129189100.00 ns, 43.0630 ms/op
+WorkloadPilot    3: 4 op, 163198900.00 ns, 40.7997 ms/op
+WorkloadPilot    4: 5 op, 198200600.00 ns, 39.6401 ms/op
+WorkloadPilot    5: 6 op, 252636900.00 ns, 42.1062 ms/op
+WorkloadPilot    6: 7 op, 280060800.00 ns, 40.0087 ms/op
+WorkloadPilot    7: 8 op, 330153500.00 ns, 41.2692 ms/op
+WorkloadPilot    8: 9 op, 368194100.00 ns, 40.9105 ms/op
+WorkloadPilot    9: 10 op, 384741500.00 ns, 38.4742 ms/op
+WorkloadPilot   10: 11 op, 426646500.00 ns, 38.7860 ms/op
+WorkloadPilot   11: 12 op, 460458900.00 ns, 38.3716 ms/op
+WorkloadPilot   12: 13 op, 524170800.00 ns, 40.3208 ms/op
+
+WorkloadWarmup   1: 13 op, 505995200.00 ns, 38.9227 ms/op
+WorkloadWarmup   2: 13 op, 497732200.00 ns, 38.2871 ms/op
+WorkloadWarmup   3: 13 op, 492947400.00 ns, 37.9190 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 13 op, 509710500.00 ns, 39.2085 ms/op
+WorkloadActual   2: 13 op, 526280200.00 ns, 40.4831 ms/op
+WorkloadActual   3: 13 op, 493165000.00 ns, 37.9358 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 13 op, 509710500.00 ns, 39.2085 ms/op
+WorkloadResult   2: 13 op, 526280200.00 ns, 40.4831 ms/op
+WorkloadResult   3: 13 op, 493165000.00 ns, 37.9358 ms/op
+// GC:  16 14 1 153738464 13
+// Threading:  65 1 13
+
+// AfterAll
+// Benchmark Process 18696 has exited with code 0.
+
+Mean = 39.209 ms, StdErr = 0.735 ms (1.88%), N = 3, StdDev = 1.274 ms
+Min = 37.936 ms, Q1 = 38.572 ms, Median = 39.209 ms, Q3 = 39.846 ms, Max = 40.483 ms
+IQR = 1.274 ms, LowerFence = 36.662 ms, UpperFence = 41.756 ms
+ConfidenceInterval = [15.973 ms; 62.445 ms] (CI 99.9%), Margin = 23.236 ms (59.26% of Mean)
+Skewness = 0, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 11 (91.7%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1492 1352 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.LU_Solve(Provider: Managed)" --job ShortRun-Net80 --benchmarkId 1 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 220300.00 ns, 220.3000 us/op
+WorkloadJitting  1: 1 op, 37019300.00 ns, 37.0193 ms/op
+
+WorkloadPilot    1: 2 op, 67872600.00 ns, 33.9363 ms/op
+WorkloadPilot    2: 3 op, 104544400.00 ns, 34.8481 ms/op
+WorkloadPilot    3: 4 op, 133503600.00 ns, 33.3759 ms/op
+WorkloadPilot    4: 5 op, 168214800.00 ns, 33.6430 ms/op
+WorkloadPilot    5: 6 op, 205185300.00 ns, 34.1976 ms/op
+WorkloadPilot    6: 7 op, 236346000.00 ns, 33.7637 ms/op
+WorkloadPilot    7: 8 op, 268098600.00 ns, 33.5123 ms/op
+WorkloadPilot    8: 9 op, 302982800.00 ns, 33.6648 ms/op
+WorkloadPilot    9: 10 op, 331441000.00 ns, 33.1441 ms/op
+WorkloadPilot   10: 11 op, 365582600.00 ns, 33.2348 ms/op
+WorkloadPilot   11: 12 op, 394384800.00 ns, 32.8654 ms/op
+WorkloadPilot   12: 13 op, 429519400.00 ns, 33.0400 ms/op
+WorkloadPilot   13: 14 op, 463779700.00 ns, 33.1271 ms/op
+WorkloadPilot   14: 15 op, 498124900.00 ns, 33.2083 ms/op
+WorkloadPilot   15: 16 op, 531408500.00 ns, 33.2130 ms/op
+
+WorkloadWarmup   1: 16 op, 525012200.00 ns, 32.8133 ms/op
+WorkloadWarmup   2: 16 op, 532044100.00 ns, 33.2528 ms/op
+WorkloadWarmup   3: 16 op, 533674300.00 ns, 33.3546 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 16 op, 529790200.00 ns, 33.1119 ms/op
+WorkloadActual   2: 16 op, 550858100.00 ns, 34.4286 ms/op
+WorkloadActual   3: 16 op, 530509300.00 ns, 33.1568 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 16 op, 529790200.00 ns, 33.1119 ms/op
+WorkloadResult   2: 16 op, 550858100.00 ns, 34.4286 ms/op
+WorkloadResult   3: 16 op, 530509300.00 ns, 33.1568 ms/op
+// GC:  0 0 0 38907792 16
+// Threading:  0 0 16
+
+// AfterAll
+// Benchmark Process 99348 has exited with code 0.
+
+Mean = 33.566 ms, StdErr = 0.432 ms (1.29%), N = 3, StdDev = 0.748 ms
+Min = 33.112 ms, Q1 = 33.134 ms, Median = 33.157 ms, Q3 = 33.793 ms, Max = 34.429 ms
+IQR = 0.658 ms, LowerFence = 32.147 ms, UpperFence = 34.780 ms
+ConfidenceInterval = [19.927 ms; 47.205 ms] (CI 99.9%), Margin = 13.639 ms (40.63% of Mean)
+Skewness = 0.38, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 10 (83.3%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1456 1460 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.QR_Solve(Provider: Managed)" --job ShortRun-Net80 --benchmarkId 2 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 224100.00 ns, 224.1000 us/op
+WorkloadJitting  1: 1 op, 86759500.00 ns, 86.7595 ms/op
+
+WorkloadPilot    1: 2 op, 161356000.00 ns, 80.6780 ms/op
+WorkloadPilot    2: 3 op, 265625200.00 ns, 88.5417 ms/op
+WorkloadPilot    3: 4 op, 317432800.00 ns, 79.3582 ms/op
+WorkloadPilot    4: 5 op, 384303800.00 ns, 76.8608 ms/op
+WorkloadPilot    5: 6 op, 416173800.00 ns, 69.3623 ms/op
+WorkloadPilot    6: 7 op, 515097200.00 ns, 73.5853 ms/op
+
+WorkloadWarmup   1: 7 op, 510625900.00 ns, 72.9466 ms/op
+WorkloadWarmup   2: 7 op, 512830400.00 ns, 73.2615 ms/op
+WorkloadWarmup   3: 7 op, 496651800.00 ns, 70.9503 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 7 op, 528606000.00 ns, 75.5151 ms/op
+WorkloadActual   2: 7 op, 527596100.00 ns, 75.3709 ms/op
+WorkloadActual   3: 7 op, 520439300.00 ns, 74.3485 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 7 op, 528606000.00 ns, 75.5151 ms/op
+WorkloadResult   2: 7 op, 527596100.00 ns, 75.3709 ms/op
+WorkloadResult   3: 7 op, 520439300.00 ns, 74.3485 ms/op
+// GC:  2 0 0 67898320 7
+// Threading:  14815 29 7
+
+// AfterAll
+// Benchmark Process 56380 has exited with code 0.
+
+Mean = 75.078 ms, StdErr = 0.367 ms (0.49%), N = 3, StdDev = 0.636 ms
+Min = 74.348 ms, Q1 = 74.860 ms, Median = 75.371 ms, Q3 = 75.443 ms, Max = 75.515 ms
+IQR = 0.583 ms, LowerFence = 73.985 ms, UpperFence = 76.318 ms
+ConfidenceInterval = [63.475 ms; 86.682 ms] (CI 99.9%), Margin = 11.604 ms (15.46% of Mean)
+Skewness = -0.36, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 9 (75.0%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1536 1476 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.Cholesky_Factor(Provider: Managed)" --job ShortRun-Net80 --benchmarkId 3 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 194200.00 ns, 194.2000 us/op
+WorkloadJitting  1: 1 op, 30261400.00 ns, 30.2614 ms/op
+
+OverheadJitting  2: 16 op, 256600.00 ns, 16.0375 us/op
+WorkloadJitting  2: 16 op, 399397100.00 ns, 24.9623 ms/op
+
+WorkloadPilot    1: 16 op, 360937500.00 ns, 22.5586 ms/op
+WorkloadPilot    2: 32 op, 730854300.00 ns, 22.8392 ms/op
+
+OverheadWarmup   1: 32 op, 1400.00 ns, 43.7500 ns/op
+OverheadWarmup   2: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadWarmup   3: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadWarmup   4: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadWarmup   5: 32 op, 400.00 ns, 12.5000 ns/op
+OverheadWarmup   6: 32 op, 500.00 ns, 15.6250 ns/op
+OverheadWarmup   7: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadWarmup   8: 32 op, 300.00 ns, 9.3750 ns/op
+
+OverheadActual   1: 32 op, 400.00 ns, 12.5000 ns/op
+OverheadActual   2: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual   3: 32 op, 400.00 ns, 12.5000 ns/op
+OverheadActual   4: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual   5: 32 op, 400.00 ns, 12.5000 ns/op
+OverheadActual   6: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadActual   7: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadActual   8: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual   9: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadActual  10: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual  11: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual  12: 32 op, 500.00 ns, 15.6250 ns/op
+OverheadActual  13: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual  14: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual  15: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadActual  16: 32 op, 200.00 ns, 6.2500 ns/op
+OverheadActual  17: 32 op, 300.00 ns, 9.3750 ns/op
+OverheadActual  18: 32 op, 400.00 ns, 12.5000 ns/op
+OverheadActual  19: 32 op, 1000.00 ns, 31.2500 ns/op
+OverheadActual  20: 32 op, 400.00 ns, 12.5000 ns/op
+
+WorkloadWarmup   1: 32 op, 715420600.00 ns, 22.3569 ms/op
+WorkloadWarmup   2: 32 op, 692943400.00 ns, 21.6545 ms/op
+WorkloadWarmup   3: 32 op, 714054600.00 ns, 22.3142 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 32 op, 694881000.00 ns, 21.7150 ms/op
+WorkloadActual   2: 32 op, 695735900.00 ns, 21.7417 ms/op
+WorkloadActual   3: 32 op, 703419100.00 ns, 21.9818 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 32 op, 694880700.00 ns, 21.7150 ms/op
+WorkloadResult   2: 32 op, 695735600.00 ns, 21.7417 ms/op
+WorkloadResult   3: 32 op, 703418800.00 ns, 21.9818 ms/op
+// GC:  3 2 2 139836032 32
+// Threading:  20736 19 32
+
+// AfterAll
+// Benchmark Process 97796 has exited with code 0.
+
+Mean = 21.813 ms, StdErr = 0.085 ms (0.39%), N = 3, StdDev = 0.147 ms
+Min = 21.715 ms, Q1 = 21.728 ms, Median = 21.742 ms, Q3 = 21.862 ms, Max = 21.982 ms
+IQR = 0.133 ms, LowerFence = 21.528 ms, UpperFence = 22.062 ms
+ConfidenceInterval = [19.132 ms; 24.494 ms] (CI 99.9%), Margin = 2.681 ms (12.29% of Mean)
+Skewness = 0.37, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 8 (66.7%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 668 660 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.Gemm_Multiply(Provider: MKL)" --job ShortRun-Net80 --benchmarkId 4 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 194500.00 ns, 194.5000 us/op
+WorkloadJitting  1: 1 op, 4872900.00 ns, 4.8729 ms/op
+
+OverheadJitting  2: 16 op, 285300.00 ns, 17.8313 us/op
+WorkloadJitting  2: 16 op, 50317100.00 ns, 3.1448 ms/op
+
+WorkloadPilot    1: 16 op, 49859200.00 ns, 3.1162 ms/op
+WorkloadPilot    2: 32 op, 95145900.00 ns, 2.9733 ms/op
+WorkloadPilot    3: 64 op, 195907700.00 ns, 3.0611 ms/op
+WorkloadPilot    4: 128 op, 372287200.00 ns, 2.9085 ms/op
+WorkloadPilot    5: 256 op, 771568700.00 ns, 3.0139 ms/op
+
+OverheadWarmup   1: 256 op, 1800.00 ns, 7.0313 ns/op
+OverheadWarmup   2: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadWarmup   3: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadWarmup   4: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadWarmup   5: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadWarmup   6: 256 op, 500.00 ns, 1.9531 ns/op
+OverheadWarmup   7: 256 op, 500.00 ns, 1.9531 ns/op
+
+OverheadActual   1: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual   2: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual   3: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual   4: 256 op, 900.00 ns, 3.5156 ns/op
+OverheadActual   5: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual   6: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual   7: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual   8: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual   9: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual  10: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual  11: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual  12: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual  13: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual  14: 256 op, 800.00 ns, 3.1250 ns/op
+OverheadActual  15: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual  16: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual  17: 256 op, 800.00 ns, 3.1250 ns/op
+OverheadActual  18: 256 op, 600.00 ns, 2.3438 ns/op
+OverheadActual  19: 256 op, 700.00 ns, 2.7344 ns/op
+OverheadActual  20: 256 op, 1200.00 ns, 4.6875 ns/op
+
+WorkloadWarmup   1: 256 op, 830048300.00 ns, 3.2424 ms/op
+WorkloadWarmup   2: 256 op, 777630700.00 ns, 3.0376 ms/op
+WorkloadWarmup   3: 256 op, 765296400.00 ns, 2.9894 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 256 op, 765858900.00 ns, 2.9916 ms/op
+WorkloadActual   2: 256 op, 769814000.00 ns, 3.0071 ms/op
+WorkloadActual   3: 256 op, 754498600.00 ns, 2.9473 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 256 op, 765858200.00 ns, 2.9916 ms/op
+WorkloadResult   2: 256 op, 769813300.00 ns, 3.0071 ms/op
+WorkloadResult   3: 256 op, 754497900.00 ns, 2.9473 ms/op
+// GC:  30 30 30 1005014920 256
+// Threading:  0 0 256
+
+// AfterAll
+// Benchmark Process 64036 has exited with code 0.
+
+Mean = 2.982 ms, StdErr = 0.018 ms (0.60%), N = 3, StdDev = 0.031 ms
+Min = 2.947 ms, Q1 = 2.969 ms, Median = 2.992 ms, Q3 = 2.999 ms, Max = 3.007 ms
+IQR = 0.030 ms, LowerFence = 2.925 ms, UpperFence = 3.044 ms
+ConfidenceInterval = [2.415 ms; 3.549 ms] (CI 99.9%), Margin = 0.567 ms (19.00% of Mean)
+Skewness = -0.28, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 7 (58.3%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1520 1576 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.LU_Solve(Provider: MKL)" --job ShortRun-Net80 --benchmarkId 5 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 198900.00 ns, 198.9000 us/op
+WorkloadJitting  1: 1 op, 3836600.00 ns, 3.8366 ms/op
+
+OverheadJitting  2: 16 op, 277600.00 ns, 17.3500 us/op
+WorkloadJitting  2: 16 op, 18055800.00 ns, 1.1285 ms/op
+
+WorkloadPilot    1: 16 op, 17472200.00 ns, 1.0920 ms/op
+WorkloadPilot    2: 32 op, 36773300.00 ns, 1.1492 ms/op
+WorkloadPilot    3: 64 op, 71806300.00 ns, 1.1220 ms/op
+WorkloadPilot    4: 128 op, 150402400.00 ns, 1.1750 ms/op
+WorkloadPilot    5: 256 op, 313587400.00 ns, 1.2250 ms/op
+WorkloadPilot    6: 512 op, 607438900.00 ns, 1.1864 ms/op
+
+OverheadWarmup   1: 512 op, 2000.00 ns, 3.9063 ns/op
+OverheadWarmup   2: 512 op, 1100.00 ns, 2.1484 ns/op
+OverheadWarmup   3: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadWarmup   4: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadWarmup   5: 512 op, 1100.00 ns, 2.1484 ns/op
+OverheadWarmup   6: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadWarmup   7: 512 op, 800.00 ns, 1.5625 ns/op
+
+OverheadActual   1: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   2: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   3: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   4: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual   5: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   6: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual   7: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual   8: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual   9: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  10: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  11: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadActual  12: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  13: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  14: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  15: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadActual  16: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual  17: 512 op, 3900.00 ns, 7.6172 ns/op
+OverheadActual  18: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual  19: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  20: 512 op, 1600.00 ns, 3.1250 ns/op
+
+WorkloadWarmup   1: 512 op, 607722600.00 ns, 1.1870 ms/op
+WorkloadWarmup   2: 512 op, 607618400.00 ns, 1.1868 ms/op
+WorkloadWarmup   3: 512 op, 683675300.00 ns, 1.3353 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 512 op, 628952500.00 ns, 1.2284 ms/op
+WorkloadActual   2: 512 op, 620005100.00 ns, 1.2109 ms/op
+WorkloadActual   3: 512 op, 717198800.00 ns, 1.4008 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 512 op, 628951600.00 ns, 1.2284 ms/op
+WorkloadResult   2: 512 op, 620004200.00 ns, 1.2109 ms/op
+WorkloadResult   3: 512 op, 717197900.00 ns, 1.4008 ms/op
+// GC:  40 40 40 1242947856 512
+// Threading:  0 0 512
+
+// AfterAll
+// Benchmark Process 80028 has exited with code 0.
+
+Mean = 1.280 ms, StdErr = 0.061 ms (4.73%), N = 3, StdDev = 0.105 ms
+Min = 1.211 ms, Q1 = 1.220 ms, Median = 1.228 ms, Q3 = 1.315 ms, Max = 1.401 ms
+IQR = 0.095 ms, LowerFence = 1.077 ms, UpperFence = 1.457 ms
+ConfidenceInterval = [-0.634 ms; 3.194 ms] (CI 99.9%), Margin = 1.914 ms (149.53% of Mean)
+Skewness = 0.37, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 6 (50.0%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1476 1512 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.QR_Solve(Provider: MKL)" --job ShortRun-Net80 --benchmarkId 6 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 208200.00 ns, 208.2000 us/op
+WorkloadJitting  1: 1 op, 14449700.00 ns, 14.4497 ms/op
+
+OverheadJitting  2: 16 op, 332800.00 ns, 20.8000 us/op
+WorkloadJitting  2: 16 op, 93419900.00 ns, 5.8387 ms/op
+
+WorkloadPilot    1: 16 op, 94632500.00 ns, 5.9145 ms/op
+WorkloadPilot    2: 32 op, 194464300.00 ns, 6.0770 ms/op
+WorkloadPilot    3: 64 op, 524800100.00 ns, 8.2000 ms/op
+
+OverheadWarmup   1: 64 op, 1600.00 ns, 25.0000 ns/op
+OverheadWarmup   2: 64 op, 700.00 ns, 10.9375 ns/op
+OverheadWarmup   3: 64 op, 600.00 ns, 9.3750 ns/op
+OverheadWarmup   4: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadWarmup   5: 64 op, 300.00 ns, 4.6875 ns/op
+OverheadWarmup   6: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadWarmup   7: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadWarmup   8: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadWarmup   9: 64 op, 200.00 ns, 3.1250 ns/op
+
+OverheadActual   1: 64 op, 600.00 ns, 9.3750 ns/op
+OverheadActual   2: 64 op, 600.00 ns, 9.3750 ns/op
+OverheadActual   3: 64 op, 800.00 ns, 12.5000 ns/op
+OverheadActual   4: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadActual   5: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadActual   6: 64 op, 600.00 ns, 9.3750 ns/op
+OverheadActual   7: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadActual   8: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual   9: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  10: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  11: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  12: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  13: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  14: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  15: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadActual  16: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadActual  17: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  18: 64 op, 400.00 ns, 6.2500 ns/op
+OverheadActual  19: 64 op, 500.00 ns, 7.8125 ns/op
+OverheadActual  20: 64 op, 1000.00 ns, 15.6250 ns/op
+
+WorkloadWarmup   1: 64 op, 370162300.00 ns, 5.7838 ms/op
+WorkloadWarmup   2: 64 op, 382180800.00 ns, 5.9716 ms/op
+WorkloadWarmup   3: 64 op, 376378400.00 ns, 5.8809 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 64 op, 369096900.00 ns, 5.7671 ms/op
+WorkloadActual   2: 64 op, 408605900.00 ns, 6.3845 ms/op
+WorkloadActual   3: 64 op, 417811300.00 ns, 6.5283 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 64 op, 369096400.00 ns, 5.7671 ms/op
+WorkloadResult   2: 64 op, 408605400.00 ns, 6.3845 ms/op
+WorkloadResult   3: 64 op, 417810800.00 ns, 6.5283 ms/op
+// GC:  6 6 6 311131640 64
+// Threading:  206 0 64
+
+// AfterAll
+// Benchmark Process 85904 has exited with code 0.
+
+Mean = 6.227 ms, StdErr = 0.233 ms (3.75%), N = 3, StdDev = 0.404 ms
+Min = 5.767 ms, Q1 = 6.076 ms, Median = 6.384 ms, Q3 = 6.456 ms, Max = 6.528 ms
+IQR = 0.381 ms, LowerFence = 5.505 ms, UpperFence = 7.027 ms
+ConfidenceInterval = [-1.151 ms; 13.604 ms] (CI 99.9%), Margin = 7.377 ms (118.48% of Mean)
+Skewness = -0.33, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 5 (41.7%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 684 1448 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.Cholesky_Factor(Provider: MKL)" --job ShortRun-Net80 --benchmarkId 7 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 185100.00 ns, 185.1000 us/op
+WorkloadJitting  1: 1 op, 3132100.00 ns, 3.1321 ms/op
+
+OverheadJitting  2: 16 op, 263800.00 ns, 16.4875 us/op
+WorkloadJitting  2: 16 op, 27229000.00 ns, 1.7018 ms/op
+
+WorkloadPilot    1: 16 op, 27562800.00 ns, 1.7227 ms/op
+WorkloadPilot    2: 32 op, 53316900.00 ns, 1.6662 ms/op
+WorkloadPilot    3: 64 op, 109193300.00 ns, 1.7061 ms/op
+WorkloadPilot    4: 128 op, 218190500.00 ns, 1.7046 ms/op
+WorkloadPilot    5: 256 op, 422383400.00 ns, 1.6499 ms/op
+WorkloadPilot    6: 512 op, 866533900.00 ns, 1.6924 ms/op
+
+OverheadWarmup   1: 512 op, 1900.00 ns, 3.7109 ns/op
+OverheadWarmup   2: 512 op, 1400.00 ns, 2.7344 ns/op
+OverheadWarmup   3: 512 op, 1200.00 ns, 2.3438 ns/op
+OverheadWarmup   4: 512 op, 1300.00 ns, 2.5391 ns/op
+OverheadWarmup   5: 512 op, 1100.00 ns, 2.1484 ns/op
+OverheadWarmup   6: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadWarmup   7: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadWarmup   8: 512 op, 800.00 ns, 1.5625 ns/op
+
+OverheadActual   1: 512 op, 1100.00 ns, 2.1484 ns/op
+OverheadActual   2: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   3: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   4: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual   5: 512 op, 1000.00 ns, 1.9531 ns/op
+OverheadActual   6: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadActual   7: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadActual   8: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual   9: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadActual  10: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  11: 512 op, 800.00 ns, 1.5625 ns/op
+OverheadActual  12: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  13: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  14: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  15: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  16: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  17: 512 op, 900.00 ns, 1.7578 ns/op
+OverheadActual  18: 512 op, 1600.00 ns, 3.1250 ns/op
+OverheadActual  19: 512 op, 1100.00 ns, 2.1484 ns/op
+OverheadActual  20: 512 op, 1000.00 ns, 1.9531 ns/op
+
+WorkloadWarmup   1: 512 op, 858679400.00 ns, 1.6771 ms/op
+WorkloadWarmup   2: 512 op, 850528600.00 ns, 1.6612 ms/op
+WorkloadWarmup   3: 512 op, 846400200.00 ns, 1.6531 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 512 op, 853699100.00 ns, 1.6674 ms/op
+WorkloadActual   2: 512 op, 852710400.00 ns, 1.6655 ms/op
+WorkloadActual   3: 512 op, 861768700.00 ns, 1.6831 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 512 op, 853698200.00 ns, 1.6674 ms/op
+WorkloadResult   2: 512 op, 852709500.00 ns, 1.6654 ms/op
+WorkloadResult   3: 512 op, 861767800.00 ns, 1.6831 ms/op
+// GC:  60 60 60 2010196616 512
+// Threading:  0 0 512
+
+// AfterAll
+// Benchmark Process 36636 has exited with code 0.
+
+Mean = 1.672 ms, StdErr = 0.006 ms (0.34%), N = 3, StdDev = 0.010 ms
+Min = 1.665 ms, Q1 = 1.666 ms, Median = 1.667 ms, Q3 = 1.675 ms, Max = 1.683 ms
+IQR = 0.009 ms, LowerFence = 1.653 ms, UpperFence = 1.689 ms
+ConfidenceInterval = [1.495 ms; 1.849 ms] (CI 99.9%), Margin = 0.177 ms (10.59% of Mean)
+Skewness = 0.37, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 4 (33.3%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1372 1592 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.Gemm_Multiply(Provider: OpenBLAS)" --job ShortRun-Net80 --benchmarkId 8 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 193400.00 ns, 193.4000 us/op
+WorkloadJitting  1: 1 op, 9379300.00 ns, 9.3793 ms/op
+
+OverheadJitting  2: 16 op, 271900.00 ns, 16.9938 us/op
+WorkloadJitting  2: 16 op, 79915000.00 ns, 4.9947 ms/op
+
+WorkloadPilot    1: 16 op, 86018600.00 ns, 5.3762 ms/op
+WorkloadPilot    2: 32 op, 159207200.00 ns, 4.9752 ms/op
+WorkloadPilot    3: 64 op, 340717300.00 ns, 5.3237 ms/op
+WorkloadPilot    4: 128 op, 642815800.00 ns, 5.0220 ms/op
+
+OverheadWarmup   1: 128 op, 1600.00 ns, 12.5000 ns/op
+OverheadWarmup   2: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadWarmup   3: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadWarmup   4: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadWarmup   5: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadWarmup   6: 128 op, 400.00 ns, 3.1250 ns/op
+
+OverheadActual   1: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual   2: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual   3: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   4: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   5: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual   6: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual   7: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual   8: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual   9: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual  10: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual  11: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  12: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual  13: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  14: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual  15: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  16: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual  17: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  18: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  19: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  20: 128 op, 600.00 ns, 4.6875 ns/op
+
+WorkloadWarmup   1: 128 op, 644296300.00 ns, 5.0336 ms/op
+WorkloadWarmup   2: 128 op, 619689900.00 ns, 4.8413 ms/op
+WorkloadWarmup   3: 128 op, 594878200.00 ns, 4.6475 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 128 op, 628941100.00 ns, 4.9136 ms/op
+WorkloadActual   2: 128 op, 639505400.00 ns, 4.9961 ms/op
+WorkloadActual   3: 128 op, 662304800.00 ns, 5.1743 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 128 op, 628940500.00 ns, 4.9136 ms/op
+WorkloadResult   2: 128 op, 639504800.00 ns, 4.9961 ms/op
+WorkloadResult   3: 128 op, 662304200.00 ns, 5.1743 ms/op
+// GC:  14 14 14 502531792 128
+// Threading:  0 0 128
+
+// AfterAll
+// Benchmark Process 17856 has exited with code 0.
+
+Mean = 5.028 ms, StdErr = 0.077 ms (1.53%), N = 3, StdDev = 0.133 ms
+Min = 4.914 ms, Q1 = 4.955 ms, Median = 4.996 ms, Q3 = 5.085 ms, Max = 5.174 ms
+IQR = 0.130 ms, LowerFence = 4.759 ms, UpperFence = 5.281 ms
+ConfidenceInterval = [2.598 ms; 7.458 ms] (CI 99.9%), Margin = 2.430 ms (48.34% of Mean)
+Skewness = 0.23, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 3 (25.0%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1460 1432 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.LU_Solve(Provider: OpenBLAS)" --job ShortRun-Net80 --benchmarkId 9 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 181600.00 ns, 181.6000 us/op
+WorkloadJitting  1: 1 op, 9606800.00 ns, 9.6068 ms/op
+
+OverheadJitting  2: 16 op, 261900.00 ns, 16.3688 us/op
+WorkloadJitting  2: 16 op, 72324500.00 ns, 4.5203 ms/op
+
+WorkloadPilot    1: 16 op, 78233400.00 ns, 4.8896 ms/op
+WorkloadPilot    2: 32 op, 181903600.00 ns, 5.6845 ms/op
+WorkloadPilot    3: 64 op, 369711800.00 ns, 5.7767 ms/op
+WorkloadPilot    4: 128 op, 746320800.00 ns, 5.8306 ms/op
+
+OverheadWarmup   1: 128 op, 1600.00 ns, 12.5000 ns/op
+OverheadWarmup   2: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadWarmup   3: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadWarmup   4: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadWarmup   5: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadWarmup   6: 128 op, 300.00 ns, 2.3438 ns/op
+
+OverheadActual   1: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   2: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   3: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual   4: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual   5: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   6: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual   7: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   8: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual   9: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  10: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  11: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  12: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  13: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  14: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  15: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  16: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  17: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual  18: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  19: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  20: 128 op, 400.00 ns, 3.1250 ns/op
+
+WorkloadWarmup   1: 128 op, 773949000.00 ns, 6.0465 ms/op
+WorkloadWarmup   2: 128 op, 740409500.00 ns, 5.7844 ms/op
+WorkloadWarmup   3: 128 op, 743657300.00 ns, 5.8098 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 128 op, 849956500.00 ns, 6.6403 ms/op
+WorkloadActual   2: 128 op, 702747900.00 ns, 5.4902 ms/op
+WorkloadActual   3: 128 op, 722067900.00 ns, 5.6412 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 128 op, 849956000.00 ns, 6.6403 ms/op
+WorkloadResult   2: 128 op, 702747400.00 ns, 5.4902 ms/op
+WorkloadResult   3: 128 op, 722067400.00 ns, 5.6412 ms/op
+// GC:  9 9 9 310728800 128
+// Threading:  0 0 128
+
+// AfterAll
+// Benchmark Process 100832 has exited with code 0.
+
+Mean = 5.924 ms, StdErr = 0.361 ms (6.09%), N = 3, StdDev = 0.625 ms
+Min = 5.490 ms, Q1 = 5.566 ms, Median = 5.641 ms, Q3 = 6.141 ms, Max = 6.640 ms
+IQR = 0.575 ms, LowerFence = 4.703 ms, UpperFence = 7.003 ms
+ConfidenceInterval = [-5.478 ms; 17.326 ms] (CI 99.9%), Margin = 11.402 ms (192.48% of Mean)
+Skewness = 0.36, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 2 (16.7%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1552 1536 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.QR_Solve(Provider: OpenBLAS)" --job ShortRun-Net80 --benchmarkId 10 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 180500.00 ns, 180.5000 us/op
+WorkloadJitting  1: 1 op, 57789800.00 ns, 57.7898 ms/op
+
+WorkloadPilot    1: 2 op, 99305900.00 ns, 49.6530 ms/op
+WorkloadPilot    2: 3 op, 178639300.00 ns, 59.5464 ms/op
+WorkloadPilot    3: 4 op, 237191000.00 ns, 59.2978 ms/op
+WorkloadPilot    4: 5 op, 303820400.00 ns, 60.7641 ms/op
+WorkloadPilot    5: 6 op, 353074500.00 ns, 58.8458 ms/op
+WorkloadPilot    6: 7 op, 431426300.00 ns, 61.6323 ms/op
+WorkloadPilot    7: 8 op, 483637800.00 ns, 60.4547 ms/op
+WorkloadPilot    8: 9 op, 549190600.00 ns, 61.0212 ms/op
+
+WorkloadWarmup   1: 9 op, 538927800.00 ns, 59.8809 ms/op
+WorkloadWarmup   2: 9 op, 549009500.00 ns, 61.0011 ms/op
+WorkloadWarmup   3: 9 op, 604153100.00 ns, 67.1281 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 9 op, 639457300.00 ns, 71.0508 ms/op
+WorkloadActual   2: 9 op, 627704400.00 ns, 69.7449 ms/op
+WorkloadActual   3: 9 op, 651720900.00 ns, 72.4134 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 9 op, 639457300.00 ns, 71.0508 ms/op
+WorkloadResult   2: 9 op, 627704400.00 ns, 69.7449 ms/op
+WorkloadResult   3: 9 op, 651720900.00 ns, 72.4134 ms/op
+// GC:  0 0 0 43757072 9
+// Threading:  45 1 9
+
+// AfterAll
+// Benchmark Process 65668 has exited with code 0.
+
+Mean = 71.070 ms, StdErr = 0.770 ms (1.08%), N = 3, StdDev = 1.334 ms
+Min = 69.745 ms, Q1 = 70.398 ms, Median = 71.051 ms, Q3 = 71.732 ms, Max = 72.413 ms
+IQR = 1.334 ms, LowerFence = 68.396 ms, UpperFence = 73.733 ms
+ConfidenceInterval = [46.726 ms; 95.413 ms] (CI 99.9%), Margin = 24.344 ms (34.25% of Mean)
+Skewness = 0.01, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 1 (8.3%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c12cfd54-8678-4915-bba0-c966c5ca3560.dll --anonymousPipes 1536 1576 --benchmarkName "MklAmdBench.LinearAlgebraProviderBenchmarks.Cholesky_Factor(Provider: OpenBLAS)" --job ShortRun-Net80 --benchmarkId 11 in C:\repos\mkl-amd-test\bench\MklAmdBench\bin\Release\net8.0\win-x64\c12cfd54-8678-4915-bba0-c966c5ca3560\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX-512F+CD+BW+DQ+VL+VBMI,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: ShortRun-Net80(IterationCount=3, LaunchCount=1, WarmupCount=3)
+
+OverheadJitting  1: 1 op, 201900.00 ns, 201.9000 us/op
+WorkloadJitting  1: 1 op, 7713100.00 ns, 7.7131 ms/op
+
+OverheadJitting  2: 16 op, 271900.00 ns, 16.9938 us/op
+WorkloadJitting  2: 16 op, 77052700.00 ns, 4.8158 ms/op
+
+WorkloadPilot    1: 16 op, 77777900.00 ns, 4.8611 ms/op
+WorkloadPilot    2: 32 op, 169276200.00 ns, 5.2899 ms/op
+WorkloadPilot    3: 64 op, 354965800.00 ns, 5.5463 ms/op
+WorkloadPilot    4: 128 op, 685646100.00 ns, 5.3566 ms/op
+
+OverheadWarmup   1: 128 op, 1500.00 ns, 11.7188 ns/op
+OverheadWarmup   2: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadWarmup   3: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadWarmup   4: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadWarmup   5: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadWarmup   6: 128 op, 400.00 ns, 3.1250 ns/op
+
+OverheadActual   1: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual   2: 128 op, 900.00 ns, 7.0313 ns/op
+OverheadActual   3: 128 op, 700.00 ns, 5.4688 ns/op
+OverheadActual   4: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   5: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   6: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual   7: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual   8: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual   9: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  10: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  11: 128 op, 600.00 ns, 4.6875 ns/op
+OverheadActual  12: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  13: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  14: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  15: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  16: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  17: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  18: 128 op, 500.00 ns, 3.9063 ns/op
+OverheadActual  19: 128 op, 400.00 ns, 3.1250 ns/op
+OverheadActual  20: 128 op, 600.00 ns, 4.6875 ns/op
+
+WorkloadWarmup   1: 128 op, 728761300.00 ns, 5.6934 ms/op
+WorkloadWarmup   2: 128 op, 725628800.00 ns, 5.6690 ms/op
+WorkloadWarmup   3: 128 op, 724675200.00 ns, 5.6615 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 128 op, 709798000.00 ns, 5.5453 ms/op
+WorkloadActual   2: 128 op, 682764200.00 ns, 5.3341 ms/op
+WorkloadActual   3: 128 op, 682329000.00 ns, 5.3307 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 128 op, 709797500.00 ns, 5.5453 ms/op
+WorkloadResult   2: 128 op, 682763700.00 ns, 5.3341 ms/op
+WorkloadResult   3: 128 op, 682328500.00 ns, 5.3307 ms/op
+// GC:  14 14 14 502526712 128
+// Threading:  0 0 128
+
+// AfterAll
+// Benchmark Process 35800 has exited with code 0.
+
+Mean = 5.403 ms, StdErr = 0.071 ms (1.31%), N = 3, StdDev = 0.123 ms
+Min = 5.331 ms, Q1 = 5.332 ms, Median = 5.334 ms, Q3 = 5.440 ms, Max = 5.545 ms
+IQR = 0.107 ms, LowerFence = 5.171 ms, UpperFence = 5.601 ms
+ConfidenceInterval = [3.161 ms; 7.646 ms] (CI 99.9%), Margin = 2.243 ms (41.51% of Mean)
+Skewness = 0.38, Kurtosis = 0.67, MValue = 2
+
+// ** Remained 0 (0.0%) benchmark(s) to run. Estimated finish 2026-09-02 16:32 (0h 0m from now) **
+Successfully reverted power plan (GUID: 381b4222-f694-41f0-9685-ff5bb260df2e FriendlyName: Balanced)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\MklAmdBench.LinearAlgebraProviderBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts\results\MklAmdBench.LinearAlgebraProviderBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts\results\MklAmdBench.LinearAlgebraProviderBenchmarks-report.html
+
+// * Detailed results *
+LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 21.813 ms, StdErr = 0.085 ms (0.39%), N = 3, StdDev = 0.147 ms
+Min = 21.715 ms, Q1 = 21.728 ms, Median = 21.742 ms, Q3 = 21.862 ms, Max = 21.982 ms
+IQR = 0.133 ms, LowerFence = 21.528 ms, UpperFence = 22.062 ms
+ConfidenceInterval = [19.132 ms; 24.494 ms] (CI 99.9%), Margin = 2.681 ms (12.29% of Mean)
+Skewness = 0.37, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[21.715 ms ; 21.982 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 1.672 ms, StdErr = 0.006 ms (0.34%), N = 3, StdDev = 0.010 ms
+Min = 1.665 ms, Q1 = 1.666 ms, Median = 1.667 ms, Q3 = 1.675 ms, Max = 1.683 ms
+IQR = 0.009 ms, LowerFence = 1.653 ms, UpperFence = 1.689 ms
+ConfidenceInterval = [1.495 ms; 1.849 ms] (CI 99.9%), Margin = 0.177 ms (10.59% of Mean)
+Skewness = 0.37, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[1.657 ms ; 1.692 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.Cholesky_Factor: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 5.403 ms, StdErr = 0.071 ms (1.31%), N = 3, StdDev = 0.123 ms
+Min = 5.331 ms, Q1 = 5.332 ms, Median = 5.334 ms, Q3 = 5.440 ms, Max = 5.545 ms
+IQR = 0.107 ms, LowerFence = 5.171 ms, UpperFence = 5.601 ms
+ConfidenceInterval = [3.161 ms; 7.646 ms] (CI 99.9%), Margin = 2.243 ms (41.51% of Mean)
+Skewness = 0.38, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[5.326 ms ; 5.550 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 39.209 ms, StdErr = 0.735 ms (1.88%), N = 3, StdDev = 1.274 ms
+Min = 37.936 ms, Q1 = 38.572 ms, Median = 39.209 ms, Q3 = 39.846 ms, Max = 40.483 ms
+IQR = 1.274 ms, LowerFence = 36.662 ms, UpperFence = 41.756 ms
+ConfidenceInterval = [15.973 ms; 62.445 ms] (CI 99.9%), Margin = 23.236 ms (59.26% of Mean)
+Skewness = 0, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[37.413 ms ; 39.731 ms) | @@
+[39.731 ms ; 41.642 ms) | @
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 2.982 ms, StdErr = 0.018 ms (0.60%), N = 3, StdDev = 0.031 ms
+Min = 2.947 ms, Q1 = 2.969 ms, Median = 2.992 ms, Q3 = 2.999 ms, Max = 3.007 ms
+IQR = 0.030 ms, LowerFence = 2.925 ms, UpperFence = 3.044 ms
+ConfidenceInterval = [2.415 ms; 3.549 ms] (CI 99.9%), Margin = 0.567 ms (19.00% of Mean)
+Skewness = -0.28, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[2.919 ms ; 3.035 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.Gemm_Multiply: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 5.028 ms, StdErr = 0.077 ms (1.53%), N = 3, StdDev = 0.133 ms
+Min = 4.914 ms, Q1 = 4.955 ms, Median = 4.996 ms, Q3 = 5.085 ms, Max = 5.174 ms
+IQR = 0.130 ms, LowerFence = 4.759 ms, UpperFence = 5.281 ms
+ConfidenceInterval = [2.598 ms; 7.458 ms] (CI 99.9%), Margin = 2.430 ms (48.34% of Mean)
+Skewness = 0.23, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[4.834 ms ; 5.076 ms) | @@
+[5.076 ms ; 5.295 ms) | @
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 33.566 ms, StdErr = 0.432 ms (1.29%), N = 3, StdDev = 0.748 ms
+Min = 33.112 ms, Q1 = 33.134 ms, Median = 33.157 ms, Q3 = 33.793 ms, Max = 34.429 ms
+IQR = 0.658 ms, LowerFence = 32.147 ms, UpperFence = 34.780 ms
+ConfidenceInterval = [19.927 ms; 47.205 ms] (CI 99.9%), Margin = 13.639 ms (40.63% of Mean)
+Skewness = 0.38, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[33.090 ms ; 34.451 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 1.280 ms, StdErr = 0.061 ms (4.73%), N = 3, StdDev = 0.105 ms
+Min = 1.211 ms, Q1 = 1.220 ms, Median = 1.228 ms, Q3 = 1.315 ms, Max = 1.401 ms
+IQR = 0.095 ms, LowerFence = 1.077 ms, UpperFence = 1.457 ms
+ConfidenceInterval = [-0.634 ms; 3.194 ms] (CI 99.9%), Margin = 1.914 ms (149.53% of Mean)
+Skewness = 0.37, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[1.210 ms ; 1.401 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.LU_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 5.924 ms, StdErr = 0.361 ms (6.09%), N = 3, StdDev = 0.625 ms
+Min = 5.490 ms, Q1 = 5.566 ms, Median = 5.641 ms, Q3 = 6.141 ms, Max = 6.640 ms
+IQR = 0.575 ms, LowerFence = 4.703 ms, UpperFence = 7.003 ms
+ConfidenceInterval = [-5.478 ms; 17.326 ms] (CI 99.9%), Margin = 11.402 ms (192.48% of Mean)
+Skewness = 0.36, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[4.921 ms ; 6.134 ms) | @@
+[6.134 ms ; 7.209 ms) | @
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=Managed]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 75.078 ms, StdErr = 0.367 ms (0.49%), N = 3, StdDev = 0.636 ms
+Min = 74.348 ms, Q1 = 74.860 ms, Median = 75.371 ms, Q3 = 75.443 ms, Max = 75.515 ms
+IQR = 0.583 ms, LowerFence = 73.985 ms, UpperFence = 76.318 ms
+ConfidenceInterval = [63.475 ms; 86.682 ms] (CI 99.9%), Margin = 11.604 ms (15.46% of Mean)
+Skewness = -0.36, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[73.770 ms ; 76.094 ms) | @@@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=MKL]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 6.227 ms, StdErr = 0.233 ms (3.75%), N = 3, StdDev = 0.404 ms
+Min = 5.767 ms, Q1 = 6.076 ms, Median = 6.384 ms, Q3 = 6.456 ms, Max = 6.528 ms
+IQR = 0.381 ms, LowerFence = 5.505 ms, UpperFence = 7.027 ms
+ConfidenceInterval = [-1.151 ms; 13.604 ms] (CI 99.9%), Margin = 7.377 ms (118.48% of Mean)
+Skewness = -0.33, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[5.399 ms ; 6.088 ms) | @
+[6.088 ms ; 6.896 ms) | @@
+---------------------------------------------------
+
+LinearAlgebraProviderBenchmarks.QR_Solve: ShortRun-Net80(Runtime=.NET 8.0, IterationCount=3, LaunchCount=1, WarmupCount=3) [Provider=OpenBLAS]
+Runtime = .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI; GC = Concurrent Workstation
+Mean = 71.070 ms, StdErr = 0.770 ms (1.08%), N = 3, StdDev = 1.334 ms
+Min = 69.745 ms, Q1 = 70.398 ms, Median = 71.051 ms, Q3 = 71.732 ms, Max = 72.413 ms
+IQR = 1.334 ms, LowerFence = 68.396 ms, UpperFence = 73.733 ms
+ConfidenceInterval = [46.726 ms; 95.413 ms] (CI 99.9%), Margin = 24.344 ms (34.25% of Mean)
+Skewness = 0.01, Kurtosis = 0.67, MValue = 2
+-------------------- Histogram --------------------
+[69.184 ms ; 71.612 ms) | @@
+[71.612 ms ; 73.628 ms) | @
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.26200.9278)
+Unknown processor
+.NET SDK 8.0.424
+  [Host]         : .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  ShortRun-Net80 : .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+
+Job=ShortRun-Net80  Runtime=.NET 8.0  IterationCount=3  
+LaunchCount=1  WarmupCount=3  
+
+| Method          | Provider | Mean      | Error      | StdDev    | Min       | Max       | Gen0      | Gen1      | Gen2     | Allocated |
+|---------------- |--------- |----------:|-----------:|----------:|----------:|----------:|----------:|----------:|---------:|----------:|
+| Cholesky_Factor | Managed  | 21.813 ms |  2.6808 ms | 0.1469 ms | 21.715 ms | 21.982 ms |   93.7500 |   62.5000 |  62.5000 |   4.17 MB |
+| Cholesky_Factor | MKL      |  1.672 ms |  0.1771 ms | 0.0097 ms |  1.665 ms |  1.683 ms |  117.1875 |  117.1875 | 117.1875 |   3.74 MB |
+| Cholesky_Factor | OpenBLAS |  5.403 ms |  2.2427 ms | 0.1229 ms |  5.331 ms |  5.545 ms |  109.3750 |  109.3750 | 109.3750 |   3.74 MB |
+| Gemm_Multiply   | Managed  | 39.209 ms | 23.2363 ms | 1.2737 ms | 37.936 ms | 40.483 ms | 1230.7692 | 1076.9231 |  76.9231 |  11.28 MB |
+| Gemm_Multiply   | MKL      |  2.982 ms |  0.5666 ms | 0.0311 ms |  2.947 ms |  3.007 ms |  117.1875 |  117.1875 | 117.1875 |   3.74 MB |
+| Gemm_Multiply   | OpenBLAS |  5.028 ms |  2.4304 ms | 0.1332 ms |  4.914 ms |  5.174 ms |  109.3750 |  109.3750 | 109.3750 |   3.74 MB |
+| LU_Solve        | Managed  | 33.566 ms | 13.6388 ms | 0.7476 ms | 33.112 ms | 34.429 ms |         - |         - |        - |   2.32 MB |
+| LU_Solve        | MKL      |  1.280 ms |  1.9141 ms | 0.1049 ms |  1.211 ms |  1.401 ms |   78.1250 |   78.1250 |  78.1250 |   2.32 MB |
+| LU_Solve        | OpenBLAS |  5.924 ms | 11.4022 ms | 0.6250 ms |  5.490 ms |  6.640 ms |   70.3125 |   70.3125 |  70.3125 |   2.32 MB |
+| QR_Solve        | Managed  | 75.078 ms | 11.6036 ms | 0.6360 ms | 74.348 ms | 75.515 ms |  285.7143 |         - |        - |   9.25 MB |
+| QR_Solve        | MKL      |  6.227 ms |  7.3774 ms | 0.4044 ms |  5.767 ms |  6.528 ms |   93.7500 |   93.7500 |  93.7500 |   4.64 MB |
+| QR_Solve        | OpenBLAS | 71.070 ms | 24.3435 ms | 1.3344 ms | 69.745 ms | 72.413 ms |         - |         - |        - |   4.64 MB |
+// * Config Issues *
+
+// * Warnings *
+Configuration
+  Summary -> The exporter MarkdownExporter-github is already present in configuration. There may be unexpected results.
+
+// * Legends *
+  Provider  : Value of the 'Provider' parameter
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Min       : Minimum
+  Max       : Maximum
+  Gen0      : GC Generation 0 collects per 1000 operations
+  Gen1      : GC Generation 1 collects per 1000 operations
+  Gen2      : GC Generation 2 collects per 1000 operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:01:22 (82.08 sec), executed benchmarks: 12
+
+Global total time: 00:01:27 (87.01 sec), executed benchmarks: 12
+// * Artifacts cleanup *
+Artifacts cleanup is finished
+
+__HERMES_CWD_c1ec6159a65d__/opt/data__HERMES_CWD_c1ec6159a65d__

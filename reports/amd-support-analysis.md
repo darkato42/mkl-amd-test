@@ -5,6 +5,7 @@
 - Host: `192.168.77.113` (Windows 11)
 - CPU: `AMD Ryzen 7 7840HS` (`AuthenticAMD`)
 - .NET SDK: `8.0.424`
+- Benchmark harness: `BenchmarkDotNet 0.14.0` (ShortRun profile)
 - Packages (active benchmark config):
   - `MathNet.Numerics` `5.0.0`
   - `MathNet.Numerics.MKL.Win-x64` `3.0.0`
@@ -13,86 +14,70 @@
 - oneMKL installed on host: `Intel.oneMKL 2026.1.0`
 - VC++ runtime installed: `Microsoft.VCRedist.2015+.x64 14.51.36247.0`
 
-## OpenBLAS version discovery (NuGet)
+## BenchmarkDotNet results (Managed vs MKL vs OpenBLAS)
 
+Source artifact:
+- `reports/benchmarkdotnet/MklAmdBench.LinearAlgebraProviderBenchmarks-report-github.md`
+
+ShortRun mean timings:
+
+- Gemm_Multiply
+  - Managed: 39.209 ms
+  - MKL: 2.982 ms (**13.15x** speedup vs Managed)
+  - OpenBLAS: 5.028 ms (**7.80x** speedup vs Managed)
+  - MKL faster than OpenBLAS by **1.69x**
+
+- LU_Solve
+  - Managed: 33.566 ms
+  - MKL: 1.280 ms (**26.22x**)
+  - OpenBLAS: 5.924 ms (**5.67x**)
+  - MKL faster than OpenBLAS by **4.63x**
+
+- QR_Solve
+  - Managed: 75.078 ms
+  - MKL: 6.227 ms (**12.06x**)
+  - OpenBLAS: 71.070 ms (**1.06x**)
+  - MKL faster than OpenBLAS by **11.41x**
+
+- Cholesky_Factor
+  - Managed: 21.813 ms
+  - MKL: 1.672 ms (**13.05x**)
+  - OpenBLAS: 5.403 ms (**4.04x**)
+  - MKL faster than OpenBLAS by **3.23x**
+
+Conclusion on this AMD host: both native providers can accelerate over managed, and MKL is consistently faster than OpenBLAS in this benchmark set.
+
+## OpenBLAS version probe and stable test
+
+NuGet discovery:
 - `MathNet.Numerics.OpenBLAS.Win`
   - Latest any: `0.3.0-beta1`
-  - **Latest stable: `0.2.0`**
-- `MathNet.Numerics.Providers.OpenBLAS`
-  - Latest any: `6.0.0-beta2`
-  - Latest stable: `5.0.0`
+  - Latest stable: `0.2.0`
 
-## Practical verification on this AMD CPU
+Stable-package test:
+- Switched benchmark project to `MathNet.Numerics.OpenBLAS.Win 0.2.0`
+- Observed: `OpenBlasLoaded=False` (provider fell back to Managed)
+- Evidence: `reports/benchmark-openblas-stable-0.2.0.txt`
 
-### MKL
-
-- `MklProvider_CanBeLoaded` test: **PASS**
-- Provider: `Intel MKL (x64; revision 15; MKL 2022.0)`
-
-### OpenBLAS (current config using `MathNet.Numerics.OpenBLAS.Win 0.3.0-beta1`)
-
-- Provider load in benchmark app: **PASS**
-- Provider: `OpenBLAS (x64; revision 1)`
-
-## Benchmark comparison: Managed vs MKL vs OpenBLAS (0.3.0-beta1)
-
-Source: `reports/benchmark-run.txt`
-
-- GEMM_Multiply_900
-  - Managed: 85.95 ms
-  - MKL: 6.83 ms (**12.58x vs Managed**)
-  - OpenBLAS: 10.14 ms (**8.47x vs Managed**)
-  - MKL faster than OpenBLAS by **1.48x**
-
-- LU_Solve_700
-  - Managed: 70.40 ms
-  - MKL: 2.12 ms (**33.22x**)
-  - OpenBLAS: 9.49 ms (**7.42x**)
-  - MKL faster than OpenBLAS by **4.48x**
-
-- QR_Solve_700
-  - Managed: 143.30 ms
-  - MKL: 12.59 ms (**11.38x**)
-  - OpenBLAS: 93.47 ms (**1.53x**)
-  - MKL faster than OpenBLAS by **7.42x**
-
-- Cholesky_Factor_900
-  - Managed: 56.77 ms
-  - MKL: 3.35 ms (**16.95x**)
-  - OpenBLAS: 9.57 ms (**5.93x**)
-  - MKL faster than OpenBLAS by **2.86x**
-
-## Additional test requested: latest stable OpenBLAS library (`0.2.0`)
-
-Source: `reports/benchmark-openblas-stable-0.2.0.txt`
-
-- Switched benchmark project to `MathNet.Numerics.OpenBLAS.Win 0.2.0` and reran.
-- Result:
-  - `OpenBlasLoaded=False`
-  - `OpenBlasProvider=Managed`
-- Interpretation: this stable package did not activate OpenBLAS with the current .NET 8 + MathNet 5 benchmark setup.
-
-After this test, project was returned to `MathNet.Numerics.OpenBLAS.Win 0.3.0-beta1` so OpenBLAS benchmarking remains functional.
-
-## AMD generation restrictions — what we can and cannot assert
+## AMD generation restrictions — what is known
 
 ### Confirmed
 
-- Intel release notes explicitly mention AMD hardware behavior in some versions.
-- oneMKL 2024 release notes state a known AMD-on-Windows issue and indicate a fix starting from oneMKL 2025.0.1.
-- Your environment (oneMKL 2026.1.0) is beyond that fix line and passes runtime tests.
+- Intel release notes explicitly mention AMD hardware behavior in certain versions.
+- oneMKL 2024 release notes document an AMD-on-Windows issue and note fix availability starting from oneMKL 2025.0.1.
+- This environment uses oneMKL 2026.1.0 and passes runtime validation.
 
-### Not publicly documented as a strict matrix
+### Not provided as a strict public matrix
 
-- We did **not** find an official Intel table like “Zen1/Zen2/Zen3/Zen4/Zen5 supported or unsupported.”
-- Intel system-requirement docs primarily list Intel CPU families for validated support; for AMD, practical compatibility should be validated by smoke/perf tests on target hardware.
+- No official Intel table was found mapping AMD Zen generations (Zen1/2/3/4/5) to supported/unsupported status for oneMKL CPU mode.
+- Practical policy is version pinning + runtime validation on each target CPU family.
 
 ## Recommended operational policy for AMD fleets
 
-1. Pin oneMKL to a known-good modern version (>=2025.0.1 on Windows).
-2. Keep a provider smoke test in CI (`UseNativeMKL`/`TryUseNativeMKL`).
-3. Benchmark representative workloads per CPU family/SKU.
-4. Keep OpenBLAS fallback path, but prefer the variant that actually loads in your stack.
+1. Pin oneMKL to a known-good version (>=2025.0.1 on Windows).
+2. Keep provider-load smoke tests in CI for MKL and fallback providers.
+3. Run BenchmarkDotNet baselines per hardware family before production rollout.
+4. Keep OpenBLAS fallback path available, but use a package/version combination that actually loads in your target stack.
 
 ## Sources
 

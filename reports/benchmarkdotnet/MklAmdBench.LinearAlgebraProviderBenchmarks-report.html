@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>MklAmdBench.LinearAlgebraProviderBenchmarks-20260902-163057</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.26200.9278)
+Unknown processor
+.NET SDK 8.0.424
+  [Host]         : .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  ShortRun-Net80 : .NET 8.0.30 (8.0.3026.36720), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+</code></pre>
+<pre><code>Job=ShortRun-Net80  Runtime=.NET 8.0  IterationCount=3  
+LaunchCount=1  WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>Method   </th><th>Provider</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Min</th><th>Max</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Cholesky_Factor</td><td>Managed</td><td>21.813 ms</td><td>2.6808 ms</td><td>0.1469 ms</td><td>21.715 ms</td><td>21.982 ms</td><td>93.7500</td><td>62.5000</td><td>62.5000</td><td>4.17 MB</td>
+</tr><tr><td>Cholesky_Factor</td><td>MKL</td><td>1.672 ms</td><td>0.1771 ms</td><td>0.0097 ms</td><td>1.665 ms</td><td>1.683 ms</td><td>117.1875</td><td>117.1875</td><td>117.1875</td><td>3.74 MB</td>
+</tr><tr><td>Cholesky_Factor</td><td>OpenBLAS</td><td>5.403 ms</td><td>2.2427 ms</td><td>0.1229 ms</td><td>5.331 ms</td><td>5.545 ms</td><td>109.3750</td><td>109.3750</td><td>109.3750</td><td>3.74 MB</td>
+</tr><tr><td>Gemm_Multiply</td><td>Managed</td><td>39.209 ms</td><td>23.2363 ms</td><td>1.2737 ms</td><td>37.936 ms</td><td>40.483 ms</td><td>1230.7692</td><td>1076.9231</td><td>76.9231</td><td>11.28 MB</td>
+</tr><tr><td>Gemm_Multiply</td><td>MKL</td><td>2.982 ms</td><td>0.5666 ms</td><td>0.0311 ms</td><td>2.947 ms</td><td>3.007 ms</td><td>117.1875</td><td>117.1875</td><td>117.1875</td><td>3.74 MB</td>
+</tr><tr><td>Gemm_Multiply</td><td>OpenBLAS</td><td>5.028 ms</td><td>2.4304 ms</td><td>0.1332 ms</td><td>4.914 ms</td><td>5.174 ms</td><td>109.3750</td><td>109.3750</td><td>109.3750</td><td>3.74 MB</td>
+</tr><tr><td>LU_Solve</td><td>Managed</td><td>33.566 ms</td><td>13.6388 ms</td><td>0.7476 ms</td><td>33.112 ms</td><td>34.429 ms</td><td>-</td><td>-</td><td>-</td><td>2.32 MB</td>
+</tr><tr><td>LU_Solve</td><td>MKL</td><td>1.280 ms</td><td>1.9141 ms</td><td>0.1049 ms</td><td>1.211 ms</td><td>1.401 ms</td><td>78.1250</td><td>78.1250</td><td>78.1250</td><td>2.32 MB</td>
+</tr><tr><td>LU_Solve</td><td>OpenBLAS</td><td>5.924 ms</td><td>11.4022 ms</td><td>0.6250 ms</td><td>5.490 ms</td><td>6.640 ms</td><td>70.3125</td><td>70.3125</td><td>70.3125</td><td>2.32 MB</td>
+</tr><tr><td>QR_Solve</td><td>Managed</td><td>75.078 ms</td><td>11.6036 ms</td><td>0.6360 ms</td><td>74.348 ms</td><td>75.515 ms</td><td>285.7143</td><td>-</td><td>-</td><td>9.25 MB</td>
+</tr><tr><td>QR_Solve</td><td>MKL</td><td>6.227 ms</td><td>7.3774 ms</td><td>0.4044 ms</td><td>5.767 ms</td><td>6.528 ms</td><td>93.7500</td><td>93.7500</td><td>93.7500</td><td>4.64 MB</td>
+</tr><tr><td>QR_Solve</td><td>OpenBLAS</td><td>71.070 ms</td><td>24.3435 ms</td><td>1.3344 ms</td><td>69.745 ms</td><td>72.413 ms</td><td>-</td><td>-</td><td>-</td><td>4.64 MB</td>
+</tr></tbody></table>
+</body>
+</html>
