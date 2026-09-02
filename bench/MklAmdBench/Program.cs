@@ -7,13 +7,10 @@ using MathNet.Numerics.Providers.LinearAlgebra;
 
 class Program
 {
-    record BenchResult(string Name, double ManagedMs, double MklMs, double Speedup, double ManagedCheck, double MklCheck, double AbsDiff);
-
     static void Main()
     {
         var rng = new Random(12345);
 
-        // Shared deterministic datasets
         int nMul = 900;
         int nSolve = 700;
         int nQr = 700;
@@ -57,42 +54,50 @@ class Program
 
         Control.UseManaged();
         var managedProvider = LinearAlgebraControl.Provider.ToString();
-
         var managed = RunSuite(benchDefs);
 
         var mklLoaded = LinearAlgebraControl.TryUseNativeMKL();
         var mklProvider = LinearAlgebraControl.Provider.ToString();
+        var mkl = mklLoaded ? RunSuite(benchDefs) : new Dictionary<string, (double Ms, double Check)>();
 
-        Dictionary<string, (double Ms, double Check)> mkl = new();
-        if (mklLoaded)
-        {
-            mkl = RunSuite(benchDefs);
-        }
+        Control.UseManaged();
+        var openBlasLoaded = LinearAlgebraControl.TryUseNativeOpenBLAS();
+        var openBlasProvider = LinearAlgebraControl.Provider.ToString();
+        var openBlas = openBlasLoaded ? RunSuite(benchDefs) : new Dictionary<string, (double Ms, double Check)>();
 
-        Console.WriteLine($"CPU_BENCH_START");
+        Console.WriteLine("CPU_BENCH_START");
         Console.WriteLine($"ManagedProvider={managedProvider}");
         Console.WriteLine($"MklLoaded={mklLoaded}");
         Console.WriteLine($"MklProvider={mklProvider}");
+        Console.WriteLine($"OpenBlasLoaded={openBlasLoaded}");
+        Console.WriteLine($"OpenBlasProvider={openBlasProvider}");
 
-        if (!mklLoaded)
-        {
-            Console.WriteLine("MKL not loaded; no comparison possible.");
-            return;
-        }
-
-        var results = new List<BenchResult>();
         foreach (var (name, _, _) in benchDefs)
         {
-            var m1 = managed[name];
-            var m2 = mkl[name];
-            var speedup = m1.Ms / m2.Ms;
-            var absDiff = Math.Abs(m1.Check - m2.Check);
-            results.Add(new BenchResult(name, m1.Ms, m2.Ms, speedup, m1.Check, m2.Check, absDiff));
-        }
+            var m = managed[name];
 
-        foreach (var r in results)
-        {
-            Console.WriteLine($"BENCH={r.Name};ManagedMs={r.ManagedMs:F2};MklMs={r.MklMs:F2};Speedup={r.Speedup:F2};AbsCheckDiff={r.AbsDiff:E3}");
+            if (mklLoaded)
+            {
+                var k = mkl[name];
+                var speed = m.Ms / k.Ms;
+                var diff = Math.Abs(m.Check - k.Check);
+                Console.WriteLine($"BENCH_MKL={name};ManagedMs={m.Ms:F2};MklMs={k.Ms:F2};Speedup={speed:F2};AbsCheckDiff={diff:E3}");
+            }
+
+            if (openBlasLoaded)
+            {
+                var o = openBlas[name];
+                var speed = m.Ms / o.Ms;
+                var diff = Math.Abs(m.Check - o.Check);
+                Console.WriteLine($"BENCH_OPENBLAS={name};ManagedMs={m.Ms:F2};OpenBlasMs={o.Ms:F2};Speedup={speed:F2};AbsCheckDiff={diff:E3}");
+            }
+
+            if (mklLoaded && openBlasLoaded)
+            {
+                var k = mkl[name];
+                var o = openBlas[name];
+                Console.WriteLine($"BENCH_MKL_vs_OPENBLAS={name};MklMs={k.Ms:F2};OpenBlasMs={o.Ms:F2};MklOverOpenBlas={(o.Ms / k.Ms):F2}");
+            }
         }
 
         Console.WriteLine("CPU_BENCH_END");
@@ -103,9 +108,7 @@ class Program
         var map = new Dictionary<string, (double Ms, double Check)>();
         foreach (var d in defs)
         {
-            // warmup
             _ = d.Work();
-
             var sw = Stopwatch.StartNew();
             double checksum = 0.0;
             for (int i = 0; i < d.Rounds; i++)
@@ -113,7 +116,6 @@ class Program
                 checksum = d.Work();
             }
             sw.Stop();
-
             map[d.Name] = (sw.Elapsed.TotalMilliseconds / d.Rounds, checksum);
         }
         return map;
