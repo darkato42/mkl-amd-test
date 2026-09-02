@@ -23,8 +23,15 @@ Validation project for MathNet native-provider performance on an AMD Windows hos
 - `MathNet.Numerics` 5.0.0
 - `MathNet.Numerics.MKL.Win-x64` 3.0.0
 - `MathNet.Numerics.Providers.OpenBLAS` 5.0.0
-- `MathNet.Numerics.OpenBLAS.Win` 0.3.0-beta1
+- `MathNet.Numerics.OpenBLAS.Win` 0.3.0-beta1 (active benchmark config)
 - Visual C++ Redistributable x64 (`Microsoft.VCRedist.2015+.x64`)
+
+## Stable OpenBLAS 0.2.0 compatibility check (brief)
+
+- Latest stable `MathNet.Numerics.OpenBLAS.Win` found: **0.2.0**
+- Trial result on this setup (`.NET 8` + `MathNet 5`): `OpenBlasLoaded=False` (provider fell back to Managed)
+- Evidence file: `reports/benchmark-openblas-stable-0.2.0.txt`
+- Therefore this repo keeps `0.3.0-beta1` for working OpenBLAS benchmarks.
 
 ## Run tests
 
