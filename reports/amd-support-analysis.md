@@ -5,50 +5,74 @@
 - Host: `192.168.77.113` (Windows 11)
 - CPU: `AMD Ryzen 7 7840HS` (`AuthenticAMD`)
 - .NET SDK: `8.0.424`
-- Packages:
+- Packages (active benchmark config):
   - `MathNet.Numerics` `5.0.0`
   - `MathNet.Numerics.MKL.Win-x64` `3.0.0`
   - `MathNet.Numerics.Providers.OpenBLAS` `5.0.0`
   - `MathNet.Numerics.OpenBLAS.Win` `0.3.0-beta1`
-- oneMKL package installed on host: `Intel.oneMKL 2026.1.0`
+- oneMKL installed on host: `Intel.oneMKL 2026.1.0`
 - VC++ runtime installed: `Microsoft.VCRedist.2015+.x64 14.51.36247.0`
 
-## Practical verification result on AMD CPU
+## OpenBLAS version discovery (NuGet)
 
-- MKL provider load test: **PASS**
-  - Provider: `Intel MKL (x64; revision 15; MKL 2022.0)`
-- OpenBLAS provider load in benchmark app: **PASS**
-  - Provider: `OpenBLAS (x64; revision 1)`
+- `MathNet.Numerics.OpenBLAS.Win`
+  - Latest any: `0.3.0-beta1`
+  - **Latest stable: `0.2.0`**
+- `MathNet.Numerics.Providers.OpenBLAS`
+  - Latest any: `6.0.0-beta2`
+  - Latest stable: `5.0.0`
 
-## Benchmark comparison (Managed vs MKL vs OpenBLAS)
+## Practical verification on this AMD CPU
+
+### MKL
+
+- `MklProvider_CanBeLoaded` test: **PASS**
+- Provider: `Intel MKL (x64; revision 15; MKL 2022.0)`
+
+### OpenBLAS (current config using `MathNet.Numerics.OpenBLAS.Win 0.3.0-beta1`)
+
+- Provider load in benchmark app: **PASS**
+- Provider: `OpenBLAS (x64; revision 1)`
+
+## Benchmark comparison: Managed vs MKL vs OpenBLAS (0.3.0-beta1)
 
 Source: `reports/benchmark-run.txt`
 
 - GEMM_Multiply_900
-  - Managed: 83.59 ms
-  - MKL: 5.55 ms (**15.05x vs Managed**)
-  - OpenBLAS: 9.89 ms (**8.45x vs Managed**)
-  - MKL faster than OpenBLAS by **1.78x**
+  - Managed: 85.95 ms
+  - MKL: 6.83 ms (**12.58x vs Managed**)
+  - OpenBLAS: 10.14 ms (**8.47x vs Managed**)
+  - MKL faster than OpenBLAS by **1.48x**
 
 - LU_Solve_700
-  - Managed: 68.23 ms
-  - MKL: 2.01 ms (**34.03x**)
-  - OpenBLAS: 6.16 ms (**11.08x**)
-  - MKL faster than OpenBLAS by **3.07x**
+  - Managed: 70.40 ms
+  - MKL: 2.12 ms (**33.22x**)
+  - OpenBLAS: 9.49 ms (**7.42x**)
+  - MKL faster than OpenBLAS by **4.48x**
 
 - QR_Solve_700
-  - Managed: 142.22 ms
-  - MKL: 59.97 ms (**2.37x**)
-  - OpenBLAS: 90.93 ms (**1.56x**)
-  - MKL faster than OpenBLAS by **1.52x**
+  - Managed: 143.30 ms
+  - MKL: 12.59 ms (**11.38x**)
+  - OpenBLAS: 93.47 ms (**1.53x**)
+  - MKL faster than OpenBLAS by **7.42x**
 
 - Cholesky_Factor_900
-  - Managed: 49.69 ms
-  - MKL: 3.01 ms (**16.51x**)
-  - OpenBLAS: 8.30 ms (**5.99x**)
-  - MKL faster than OpenBLAS by **2.76x**
+  - Managed: 56.77 ms
+  - MKL: 3.35 ms (**16.95x**)
+  - OpenBLAS: 9.57 ms (**5.93x**)
+  - MKL faster than OpenBLAS by **2.86x**
 
-Conclusion on this AMD host: both native providers accelerate over managed; MKL is consistently faster than OpenBLAS in these workloads.
+## Additional test requested: latest stable OpenBLAS library (`0.2.0`)
+
+Source: `reports/benchmark-openblas-stable-0.2.0.txt`
+
+- Switched benchmark project to `MathNet.Numerics.OpenBLAS.Win 0.2.0` and reran.
+- Result:
+  - `OpenBlasLoaded=False`
+  - `OpenBlasProvider=Managed`
+- Interpretation: this stable package did not activate OpenBLAS with the current .NET 8 + MathNet 5 benchmark setup.
+
+After this test, project was returned to `MathNet.Numerics.OpenBLAS.Win 0.3.0-beta1` so OpenBLAS benchmarking remains functional.
 
 ## AMD generation restrictions — what we can and cannot assert
 
@@ -66,9 +90,9 @@ Conclusion on this AMD host: both native providers accelerate over managed; MKL 
 ## Recommended operational policy for AMD fleets
 
 1. Pin oneMKL to a known-good modern version (>=2025.0.1 on Windows).
-2. Always run provider-load smoke tests (`TryUseNativeMKL`/`UseNativeMKL`) in CI.
-3. Run numeric consistency checks and representative benchmarks on each target CPU family.
-4. Keep OpenBLAS fallback path available if a future MKL regression appears on specific AMD SKUs.
+2. Keep a provider smoke test in CI (`UseNativeMKL`/`TryUseNativeMKL`).
+3. Benchmark representative workloads per CPU family/SKU.
+4. Keep OpenBLAS fallback path, but prefer the variant that actually loads in your stack.
 
 ## Sources
 

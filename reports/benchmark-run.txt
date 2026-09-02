@@ -1,19 +1,21 @@
+  Determining projects to restore...
+  Restored C:\repos\mkl-amd-test\bench\MklAmdBench\MklAmdBench.csproj (in 184 ms).
 CPU_BENCH_START
 ManagedProvider=Managed
 MklLoaded=True
 MklProvider=Intel MKL (x64; revision 15; MKL 2022.0)
 OpenBlasLoaded=True
 OpenBlasProvider=OpenBLAS (x64; revision 1)
-BENCH_MKL=GEMM_Multiply_900;ManagedMs=83.59;MklMs=5.55;Speedup=15.05;AbsCheckDiff=2.910E-011
-BENCH_OPENBLAS=GEMM_Multiply_900;ManagedMs=83.59;OpenBlasMs=9.89;Speedup=8.45;AbsCheckDiff=5.821E-011
-BENCH_MKL_vs_OPENBLAS=GEMM_Multiply_900;MklMs=5.55;OpenBlasMs=9.89;MklOverOpenBlas=1.78
-BENCH_MKL=LU_Solve_700;ManagedMs=68.23;MklMs=2.01;Speedup=34.03;AbsCheckDiff=1.307E-009
-BENCH_OPENBLAS=LU_Solve_700;ManagedMs=68.23;OpenBlasMs=6.16;Speedup=11.08;AbsCheckDiff=2.492E-009
-BENCH_MKL_vs_OPENBLAS=LU_Solve_700;MklMs=2.01;OpenBlasMs=6.16;MklOverOpenBlas=3.07
-BENCH_MKL=QR_Solve_700;ManagedMs=142.22;MklMs=59.97;Speedup=2.37;AbsCheckDiff=2.698E-014
-BENCH_OPENBLAS=QR_Solve_700;ManagedMs=142.22;OpenBlasMs=90.93;Speedup=1.56;AbsCheckDiff=4.330E-015
-BENCH_MKL_vs_OPENBLAS=QR_Solve_700;MklMs=59.97;OpenBlasMs=90.93;MklOverOpenBlas=1.52
-BENCH_MKL=Cholesky_Factor_900;ManagedMs=49.69;MklMs=3.01;Speedup=16.51;AbsCheckDiff=3.638E-012
-BENCH_OPENBLAS=Cholesky_Factor_900;ManagedMs=49.69;OpenBlasMs=8.30;Speedup=5.99;AbsCheckDiff=1.637E-011
-BENCH_MKL_vs_OPENBLAS=Cholesky_Factor_900;MklMs=3.01;OpenBlasMs=8.30;MklOverOpenBlas=2.76
+BENCH_MKL=GEMM_Multiply_900;ManagedMs=85.95;MklMs=6.83;Speedup=12.58;AbsCheckDiff=2.910E-011
+BENCH_OPENBLAS=GEMM_Multiply_900;ManagedMs=85.95;OpenBlasMs=10.14;Speedup=8.47;AbsCheckDiff=5.821E-011
+BENCH_MKL_vs_OPENBLAS=GEMM_Multiply_900;MklMs=6.83;OpenBlasMs=10.14;MklOverOpenBlas=1.48
+BENCH_MKL=LU_Solve_700;ManagedMs=70.40;MklMs=2.12;Speedup=33.22;AbsCheckDiff=1.307E-009
+BENCH_OPENBLAS=LU_Solve_700;ManagedMs=70.40;OpenBlasMs=9.49;Speedup=7.42;AbsCheckDiff=2.492E-009
+BENCH_MKL_vs_OPENBLAS=LU_Solve_700;MklMs=2.12;OpenBlasMs=9.49;MklOverOpenBlas=4.48
+BENCH_MKL=QR_Solve_700;ManagedMs=143.30;MklMs=12.59;Speedup=11.38;AbsCheckDiff=2.698E-014
+BENCH_OPENBLAS=QR_Solve_700;ManagedMs=143.30;OpenBlasMs=93.47;Speedup=1.53;AbsCheckDiff=4.330E-015
+BENCH_MKL_vs_OPENBLAS=QR_Solve_700;MklMs=12.59;OpenBlasMs=93.47;MklOverOpenBlas=7.42
+BENCH_MKL=Cholesky_Factor_900;ManagedMs=56.77;MklMs=3.35;Speedup=16.95;AbsCheckDiff=3.638E-012
+BENCH_OPENBLAS=Cholesky_Factor_900;ManagedMs=56.77;OpenBlasMs=9.57;Speedup=5.93;AbsCheckDiff=1.637E-011
+BENCH_MKL_vs_OPENBLAS=Cholesky_Factor_900;MklMs=3.35;OpenBlasMs=9.57;MklOverOpenBlas=2.86
 CPU_BENCH_END

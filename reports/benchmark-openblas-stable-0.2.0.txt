@@ -1,0 +1,11 @@
+CPU_BENCH_START
+ManagedProvider=Managed
+MklLoaded=True
+MklProvider=Intel MKL (x64; revision 15; MKL 2022.0)
+OpenBlasLoaded=False
+OpenBlasProvider=Managed
+BENCH_MKL=GEMM_Multiply_900;ManagedMs=82.42;MklMs=8.57;Speedup=9.62;AbsCheckDiff=2.910E-011
+BENCH_MKL=LU_Solve_700;ManagedMs=68.46;MklMs=2.07;Speedup=33.07;AbsCheckDiff=1.307E-009
+BENCH_MKL=QR_Solve_700;ManagedMs=133.88;MklMs=9.75;Speedup=13.73;AbsCheckDiff=2.698E-014
+BENCH_MKL=Cholesky_Factor_900;ManagedMs=50.71;MklMs=2.87;Speedup=17.69;AbsCheckDiff=3.638E-012
+CPU_BENCH_END
