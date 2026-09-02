@@ -1,0 +1,39 @@
+name: dotnet-ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-and-bench:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore solution
+        run: dotnet restore MklAmdTest.sln
+
+      - name: Run xUnit tests (win-x64)
+        run: dotnet test tests/MklAmdProbe.Tests/MklAmdProbe.Tests.csproj --runtime win-x64 -c Release -v minimal --logger "trx;LogFileName=ci-tests.trx"
+
+      - name: Run benchmark (win-x64)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path reports | Out-Null
+          dotnet run --project bench/MklAmdBench/MklAmdBench.csproj -c Release -r win-x64 | Tee-Object -FilePath reports/ci-benchmark.txt
+
+      - name: Upload test + benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mkl-amd-ci-artifacts
+          path: |
+            tests/MklAmdProbe.Tests/TestResults/*.trx
+            reports/ci-benchmark.txt
